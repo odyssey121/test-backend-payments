@@ -5,8 +5,8 @@ namespace App\Utils;
 use App\Services\Api\V1\Gateway\GatewayCommon;
 use App\Traits\ConvertVariable;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Facade;
+use Symfony\Component\HttpFoundation\Response;
 
 class GatewayServiceById extends Facade
 {
@@ -24,7 +24,7 @@ class GatewayServiceById extends Facade
             );
         } catch (\Exception $exception) {
             throw new HttpResponseException(
-                response()->json(['success' => false, 'errors' => $exception->getMessage()], JsonResponse::HTTP_NOT_FOUND)
+                response()->json(['success' => false, 'errors' => $exception->getMessage()], Response::HTTP_NOT_FOUND)
             );
         }
 
