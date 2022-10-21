@@ -13,6 +13,8 @@ abstract class GatewayCommon
 {
     abstract protected function makeValidations(Gateway $gateway, Request $request);
 
+    abstract public function updatePaymentStatus(Request $request, int $gateway_id);
+
     public function validate($data, $rules)
     {
         $validator = Validator::make($data, $rules);

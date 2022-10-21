@@ -51,7 +51,7 @@ class Gateway2Service extends GatewayCommon
         }
     }
 
-    public function updatePaymentStatus(Request $request, int $gateway_id)
+    public function updatePaymentStatus(Request $request, int $gateway_id): JsonResponse
     {
         $currentGateway = Gateway::find($gateway_id);
         // some validation
