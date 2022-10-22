@@ -8,8 +8,6 @@ use JetBrains\PhpStorm\Pure;
 
 class Currency extends Facade
 {
-    use ConvertVariable;
-
 
     #[Pure] public static function convertCent(int $amount): float
     {
