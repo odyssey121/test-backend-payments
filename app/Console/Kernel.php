@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // reset gateway limit - daily
+        $schedule->command('gateways:reset_payments_count')->daily();
     }
 
     /**

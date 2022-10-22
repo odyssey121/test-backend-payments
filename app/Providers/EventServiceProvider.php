@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\ChangePayStatusEvent;
+use App\Events\TestEvent;
+use App\Listeners\ChangePayStatusListener;
+use App\Listeners\TestListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,9 +19,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
+        Registered::class => [SendEmailVerificationNotification::class,],
+        ChangePayStatusEvent::class => [ChangePayStatusListener::class]
+
     ];
 
     /**
@@ -27,7 +31,10 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+//        Event::listen(
+//            ChangePayStatusEvent::class,
+//            [ChangePayStatusListener::class, 'handle']
+//        );
     }
 
     /**
